@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const cors = require("cors")
 const braintree = require("braintree");
 
+const port = process.env.PORT || 3000;
+
 const gateway = new braintree.BraintreeGateway({
     environment: braintree.Environment.Sandbox,
     merchantId: 'v9r2dmrt68yt3drz',
@@ -40,6 +42,6 @@ app.post("/checkoutWithPayment", jsonParser, (req, res) => {
         res.send(result);    
      });
   });
-  app.listen(route, () => {
+  app.listen(port , () => {
       console.log("Server Started at", process.env.PORT || 3000);
   });
